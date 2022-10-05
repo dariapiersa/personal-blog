@@ -1,48 +1,27 @@
 import { Fragment } from "react";
 import FeaturedPost from "../components/HomePage/featured-posts";
 import Hero from "../components/HomePage/hero";
+import {getFeaturedPosts} from '../lib/posts-util'
 
-const DUMMY_POSTS = [
-  {
-    slug: "getting-started-with-nextjs",
-    title: "Getting Started with NextJS",
-    image: "getting-started-nextjs.png",
-    excerpt:
-      "Next Js is a the React framework for production - it makes buildind fullstack React apps and sites a breeze ans ships with built-in SSR.",
-    date: "2022-09-27",
-  },
-  {
-    slug: "getting-started-with-nextjs2",
-    title: "Getting Started with NextJS",
-    image: "getting-started-nextjs.png",
-    excerpt:
-      "Next Js is a the React framework for production - it makes buildind fullstack React apps and sites a breeze ans ships with built-in SSR.",
-    date: "2022-09-27",
-  },
-  {
-    slug: "getting-started-with-nextjs3",
-    title: "Getting Started with NextJS",
-    image: "getting-started-nextjs.png",
-    excerpt:
-      "Next Js is a the React framework for production - it makes buildind fullstack React apps and sites a breeze ans ships with built-in SSR.",
-    date: "2022-09-27",
-  },
-  {
-    slug: "getting-started-with-nextjs4",
-    title: "Getting Started with NextJS",
-    image: "getting-started-nextjs.png",
-    excerpt:
-      "Next Js is a the React framework for production - it makes buildind fullstack React apps and sites a breeze ans ships with built-in SSR.",
-    date: "2022-09-27",
-  },
-];
+function HomePage(props) {
 
-function HomePage() {
   return (
     <Fragment>
       <Hero />
-      <FeaturedPost posts={DUMMY_POSTS} />
+      <FeaturedPost posts={props.posts} />
     </Fragment>
   );
 }
+
+export function getStaticProps(){
+  const featuredPost = getFeaturedPosts();
+
+  return {
+    props:{
+      posts: featuredPost
+    },
+  }
+}
+
+
 export default HomePage;
