@@ -5,7 +5,7 @@ import classes from "./hero.module.css";
 function Hero() {
   return (
     <section className={classes.hero}>
-      <div classesName={classes.image}>
+      <div className={classes.image}>
       <Image
         src="/images/site/daria.png"
         alt="An image showing Daria"
